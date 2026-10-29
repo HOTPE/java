@@ -1,0 +1,18 @@
+import java.util.Scanner;
+
+public class Main
+{
+    public static void main(String[] args)
+    {
+        Scanner scanner = new Scanner(System.in);
+        String day;
+        System.out.print("Enter the day: ");
+        day = scanner.nextLine();
+        switch (day)
+        {
+            case "monday", "tuesday", "wednesday", "thursday", "friday" -> System.out.print("in a weekday ;)");
+            case "saturday", "sunday" -> System.out.print("in a weekday:)");
+        }
+        scanner.close();
+    }
+}
