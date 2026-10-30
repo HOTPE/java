@@ -1,0 +1,30 @@
+import java.util.Scanner;
+import java.util.Random;
+public class Main
+{
+    public static void main(String[] args)
+    {
+        Scanner scanner = new Scanner(System.in);
+        Random random = new Random();
+        int target = random.nextInt(1,100);
+        int yournumber;
+        int tmp = 0;
+        do{
+            System.out.print("enter yournumber (1-100): ");
+            yournumber = scanner.nextInt();
+            if(yournumber > target){
+                System.out.println("Too high");
+            }
+            else if(yournumber < target){
+                System.out.println("Too low");
+            }
+            else {
+                System.out.println("correct");
+                System.out.printf("tmp: %d", tmp);
+            }
+            tmp++;
+        }while(yournumber != target );
+
+        scanner.close();
+    }
+}
