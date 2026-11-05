@@ -1,0 +1,26 @@
+import java.util.Scanner;
+import java.util.Random;
+import java.util.Locale;
+import java.util.Arrays;
+public class Main
+{
+
+    public static void main(String[] args)
+    {
+        Scanner scanner = new Scanner(System.in);
+        String[] vegetables = {"carrot", "potato", "avovado"};
+        String[] fruits = {"banana", "quaterlemon", "coconut"};
+        String[] meats = {"kube", "sheep", "chicken"};
+        String[][] groceries = {vegetables, fruits, meats};
+        for(String[] foods : groceries)
+        {
+            for( String food : foods)
+            {
+                System.out.print(" " + food);
+            }
+            System.out.println();
+        }
+
+    }
+
+}
