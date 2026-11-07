@@ -1,0 +1,96 @@
+import java.util.Scanner;
+import java.util.Random;
+import java.util.Locale;
+import java.util.Arrays;
+public class Main
+{
+     static Scanner scanner = new Scanner(System.in);
+    public static void main(String[] args)
+    {
+
+        int balance = 100;
+        int bet;
+        System.out.println("**************");
+        System.out.println("welcom to game");
+        System.out.println("**************");
+            while (balance > 0) {
+                System.out.println("balance: " + balance);
+                System.out.print("bet: ");
+                bet = scanner.nextInt();
+                System.out.println("spinning...");
+                if (bet > balance) {
+                    System.out.println("vui long nhap bet < balance!");
+                    continue;
+                } else if (bet <= 0) {
+                    System.out.println("vui long nhap bet > 0!");
+                    continue;
+                } else {
+                    balance -= bet;
+                }
+                String[] tmp = spin();
+                System.out.println(String.join(" | ", tmp));
+                if (result(tmp, bet) > 0) {
+                    balance += result(tmp, bet);
+                    System.out.println("You won!");
+                } else {
+                    System.out.println("You lose!");
+                }
+                
+            }
+
+    }
+    static String[] spin()
+    {
+        String[] symbol = {"🍒", "🍉", "🍋", "🔔", "⭐"};
+        Random random = new Random();
+        String[] result = new String[3];
+        for(int i = 0; i < 3; i++)
+        {
+            result[i] = symbol[random.nextInt(symbol.length)];
+        }
+        return result;
+    }
+    static int result(String[] tmp, int bet)
+    {
+        if(tmp[0].equals(tmp[1]) && tmp[1].equals(tmp[2]))
+        {
+            return switch(tmp[0])
+            {
+                case "🍒" -> bet *= 10;
+                case "🍉" -> bet *= 20;
+                case "🍋" -> bet *= 30;
+                case "🔔" -> bet *= 40;
+                case "⭐" -> bet *= 50;
+                default -> 0;
+            };
+
+        }
+        else if(tmp[0].equals(tmp[1]))
+        {
+            return switch(tmp[0])
+            {
+                case "🍒" -> bet *= 2;
+                case "🍉" -> bet *= 3;
+                case "🍋" -> bet *= 4;
+                case "🔔" -> bet *= 5;
+                case "⭐" -> bet *= 6;
+                default -> 0;
+            };
+        }
+        else if(tmp[1].equals(tmp[2]))
+        {
+            return switch(tmp[0])
+            {
+                case "🍒" -> bet *= 2;
+                case "🍉" -> bet *= 3;
+                case "🍋" -> bet *= 4;
+                case "🔔" -> bet *= 5;
+                case "⭐" -> bet *= 6;
+                default -> 0;
+            };
+        }
+        return 0;
+    }
+    
+
+}
